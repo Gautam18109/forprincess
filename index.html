@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Riya ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#03030b;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-5;
+}
+
+.vignette{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:10;
+    background:radial-gradient(
+        circle,
+        transparent 35%,
+        rgba(0,0,0,.25) 70%,
+        rgba(0,0,0,.75) 100%
+    );
+}
+
+section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    position:relative;
+}
+
+.content{
+    width:min(900px,95%);
+    text-align:center;
+}
+
+.small{
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:12px;
+    opacity:.7;
+}
+
+h1{
+    font-size:clamp(45px,9vw,105px);
+    margin:20px 0;
+    background:linear-gradient(90deg,#fff,#ffb8dc,#fff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 40px rgba(255,120,190,.3);
+}
+
+h2{
+    font-size:clamp(32px,6vw,65px);
+    margin-bottom:25px;
+}
+
+p{
+    line-height:1.8;
+    color:#ddd;
+    font-size:17px;
+}
+
+.glass{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.1);
+    backdrop-filter:blur(18px);
+    border-radius:30px;
+    padding:45px;
+}
+
+.btn{
+    border:none;
+    outline:none;
+    padding:16px 28px;
+    margin:10px;
+    border-radius:50px;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4fa3,#9d5cff);
+    box-shadow:0 10px 35px rgba(255,70,170,.25);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 45px rgba(255,70,170,.4);
+}
+
+.btn.secondary{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+/* ENTER */
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    background:#02020a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:1s ease;
+}
+
+.intro-box{
+    text-align:center;
+    width:min(700px,90%);
+}
+
+.intro-box h2{
+    font-size:clamp(30px,7vw,70px);
+    margin:20px 0;
+}
+
+.enter-btn{
+    padding:18px 35px;
+    border-radius:50px;
+    background:white;
+    color:#111;
+    border:0;
+    cursor:pointer;
+    font-weight:bold;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.enter-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px rgba(255,255,255,.4);
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-50px;
+    pointer-events:none;
+    animation:floatHeart linear forwards;
+    z-index:4;
+}
+
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) scale(.6) rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) scale(1.3) rotate(30deg);
+        opacity:0;
+    }
+}
+
+/* NAME */
+.name{
+    font-size:clamp(70px,15vw,160px);
+    font-weight:900;
+    letter-spacing:10px;
+    color:#fff;
+    text-shadow:
+        0 0 10px #ff72b7,
+        0 0 40px #ff72b7,
+        0 0 90px rgba(255,70,170,.5);
+    animation:namePulse 3s ease-in-out infinite;
+}
+
+@keyframes namePulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+/* HEART */
+.big-heart{
+    font-size:130px;
+    animation:heartBeat 1.5s infinite;
+    filter:drop-shadow(0 0 35px #ff4f9a);
+}
+
+@keyframes heartBeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    15%{
+        transform:scale(1.18);
+    }
+    30%{
+        transform:scale(1);
+    }
+    45%{
+        transform:scale(1.1);
+    }
+}
+
+/* TEDDY */
+.teddy-area{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.teddy{
+    position:relative;
+    width:145px;
+    height:190px;
+    animation:teddyFloat 3s ease-in-out infinite;
+}
+
+.teddy:nth-child(2){
+    animation-delay:1s;
+}
+
+@keyframes teddyFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-2deg);
+    }
+    50%{
+        transform:translateY(-14px) rotate(2deg);
+    }
+}
+
+.ear{
+    position:absolute;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#b7795c;
+    top:5px;
+}
+
+.ear:after{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border-radius:50%;
+    background:#e5a083;
+}
+
+.ear.left{
+    left:4px;
+}
+
+.ear.right{
+    right:4px;
+}
+
+.head{
+    position:absolute;
+    top:25px;
+    left:18px;
+    width:110px;
+    height:100px;
+    border-radius:50%;
+    background:#b7795c;
+    box-shadow:inset 0 -8px rgba(0,0,0,.08);
+}
+
+.eye{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:#17100d;
+    border-radius:50%;
+    top:42px;
+}
+
+.eye.left{
+    left:30px;
+}
+
+.eye.right{
+    right:30px;
+}
+
+.muzzle{
+    position:absolute;
+    width:48px;
+    height:35px;
+    border-radius:50%;
+    background:#e5b092;
+    left:31px;
+    top:55px;
+}
+
+.nose{
+    position:absolute;
+    width:13px;
+    height:9px;
+    border-radius:50%;
+    background:#3b2119;
+    left:18px;
+    top:8px;
+}
+
+.mouth{
+    position:absolute;
+    left:20px;
+    top:18px;
+    width:9px;
+    height:6px;
+    border-bottom:2px solid #3b2119;
+    border-radius:50%;
+}
+
+.body{
+    position:absolute;
+    left:25px;
+    top:112px;
+    width:95px;
+    height:75px;
+    border-radius:45px 45px 25px 25px;
+    background:#b7795c;
+}
+
+.belly{
+    position:absolute;
+    width:58px;
+    height:45px;
+    background:#e5b092;
+    border-radius:50%;
+    left:18px;
+    top:15px;
+}
+
+.arm{
+    position:absolute;
+    width:35px;
+    height:65px;
+    background:#b7795c;
+    border-radius:30px;
+    top:118px;
+}
+
+.arm.left{
+    left:0;
+    transform:rotate(25deg);
+}
+
+.arm.right{
+    right:0;
+    transform:rotate(-25deg);
+}
+
+.foot{
+    position:absolute;
+    width:45px;
+    height:28px;
+    background:#b7795c;
+    border-radius:50%;
+    bottom:-5px;
+}
+
+.foot.left{
+    left:18px;
+}
+
+.foot.right{
+    right:18px;
+}
+
+/* SURPRISE BOX */
+.surprise-wrapper{
+    margin:30px auto;
+    text-align:center;
+}
+
+.gift{
+    position:relative;
+    width:190px;
+    height:145px;
+    margin:35px auto;
+    cursor:pointer;
+    transform-style:preserve-3d;
+}
+
+.gift-body{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:190px;
+    height:115px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#e94c92,#793cff);
+    box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+
+.gift-body:before{
+    content:"";
+    position:absolute;
+    left:76px;
+    top:0;
+    width:38px;
+    height:115px;
+    background:rgba(255,255,255,.25);
+}
+
+.gift-lid{
+    position:absolute;
+    top:0;
+    left:-10px;
+    width:210px;
+    height:45px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#ff5ca8,#8c49ff);
+    z-index:3;
+    transition:1s ease;
+    transform-origin:left bottom;
+}
+
+.gift-lid:after{
+    content:"";
+    position:absolute;
+    left:85px;
+    top:0;
+    width:40px;
+    height:45px;
+    background:rgba(255,255,255,.25);
+}
+
+.gift.open .gift-lid{
+    transform:rotate(-25deg) translateY(-65px);
+}
+
+.ribbon{
+    position:absolute;
+    left:78px;
+    top:-22px;
+    width:35px;
+    height:25px;
+    z-index:5;
+}
+
+.ribbon:before,
+.ribbon:after{
+    content:"";
+    position:absolute;
+    width:38px;
+    height:25px;
+    border:6px solid white;
+    border-radius:50%;
+}
+
+.ribbon:before{
+    transform:rotate(25deg);
+}
+
+.ribbon:after{
+    transform:rotate(-25deg);
+    left:25px;
+}
+
+.surprise-text{
+    margin:20px auto;
+    max-width:500px;
+}
+
+#letter{
+    display:none;
+    opacity:0;
+    transform:translateY(30px) scale(.95);
+}
+
+#letter.show{
+    display:block;
+    animation:letterReveal 1.2s forwards;
+}
+
+@keyframes letterReveal{
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.letter-card{
+    position:relative;
+    background:
+        linear-gradient(
+            rgba(255,255,255,.92),
+            rgba(255,248,252,.96)
+        );
+    color:#2d1824;
+    border-radius:25px;
+    padding:45px 35px;
+    max-width:650px;
+    margin:auto;
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.55),
+        0 0 70px rgba(255,90,170,.15);
+    text-align:left;
+}
+
+.letter-card h3{
+    text-align:center;
+    font-size:30px;
+    color:#b52f72;
+    margin-bottom:25px;
+}
+
+.letter-card p{
+    color:#392632;
+    font-size:16px;
+    line-height:2;
+    margin-bottom:12px;
+}
+
+/* PROPOSAL */
+.proposal{
+    min-height:500px;
+}
+
+.question{
+    font-size:clamp(35px,7vw,70px);
+    line-height:1.2;
+    margin:25px 0;
+}
+
+.response{
+    margin-top:25px;
+    min-height:35px;
+    font-size:18px;
+    color:#ffb9d9;
+}
+
+/* MUSIC */
+.music{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:30;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(20,20,30,.65);
+    color:white;
+    cursor:pointer;
+    backdrop-filter:blur(15px);
+}
+
+/* CONFETTI */
+.confetti{
+    position:fixed;
+    width:8px;
+    height:14px;
+    top:-30px;
+    z-index:100;
+    animation:confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+
+    section{
+        padding:30px 15px;
+    }
+
+    .glass{
+        padding:28px 20px;
+        border-radius:22px;
+    }
+
+    p{
+        font-size:15px;
+    }
+
+    .name{
+        letter-spacing:5px;
+    }
+
+    .letter-card{
+        padding:30px 22px;
+    }
+
+    .teddy-area{
+        gap:15px;
+    }
+
+    .teddy{
+        transform:scale(.8);
+    }
+
+    .big-heart{
+        font-size:100px;
+    }
+
+    .btn{
+        width:90%;
+        max-width:300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="space"></canvas>
+
+<div class="vignette"></div>
+
+<!-- INTRO -->
+<div id="intro">
+
+    <div class="intro-box">
+
+        <div class="small">
+            A little something for you
+        </div>
+
+        <h2>
+            Enter My Little Universe ✦
+        </h2>
+
+        <p>
+            There is something I wanted to tell you...
+        </p>
+
+        <br>
+
+        <button class="enter-btn" onclick="enterUniverse()">
+            ENTER ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MUSIC -->
+<button class="music" onclick="toggleMusic()" id="musicBtn">
+    🎵
+</button>
+
+<audio id="music" loop>
+    <source src="background.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- HERO -->
+<section>
+
+    <div class="content">
+
+        <div class="small">
+            Somewhere between ordinary days...
+        </div>
+
+        <h1>
+            I Found Something Special
+        </h1>
+
+        <p>
+            Some people enter our lives quietly...
+            and somehow become a beautiful part of our thoughts.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- RIYA -->
+<section>
+
+    <div class="content">
+
+        <div class="small">
+            The name behind this little universe
+        </div>
+
+        <div class="name">
+            RIYA
+        </div>
+
+        <p>
+            Just seeing this name can make an ordinary moment
+            feel a little different. ✨
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- TEDDY SECTION -->
+<section>
+
+    <div class="content glass">
+
+        <div class="small">
+            A little cuteness
+        </div>
+
+        <h2>
+            Sending You Some Teddy Hugs 🧸
+        </h2>
+
+        <p>
+            No complicated words here...
+            just two tiny teddies bringing a little smile. 🌸
+        </p>
+
+        <div class="teddy-area">
+
+            <!-- TEDDY 1 -->
+            <div class="teddy">
+
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+
+                <div class="head">
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="muzzle">
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                    </div>
+
+                </div>
+
+                <div class="body">
+                    <div class="belly"></div>
+                </div>
+
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+
+                <div class="foot left"></div>
+                <div class="foot right"></div>
+
+            </div>
+
+
+            <!-- TEDDY 2 -->
+            <div class="teddy">
+
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+
+                <div class="head">
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="muzzle">
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                    </div>
+
+                </div>
+
+                <div class="body">
+                    <div class="belly"></div>
+                </div>
+
+                <div class="arm left"></div>
+                <div class="arm right"></div>
+
+                <div class="foot left"></div>
+                <div class="foot right"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SURPRISE -->
+<section>
+
+    <div class="content">
+
+        <div class="small">
+            One little surprise
+        </div>
+
+        <h2>
+            I Have Something For You 🎁
+        </h2>
+
+        <div class="surprise-wrapper">
+
+            <div
+                class="gift"
+                id="gift"
+                onclick="openGift()"
+            >
+
+                <div class="gift-lid"></div>
+
+                <div class="gift-body"></div>
+
+                <div class="ribbon"></div>
+
+            </div>
+
+            <p class="surprise-text" id="surpriseText">
+                There is a little message hidden inside.
+            </p>
+
+            <button
+                class="btn"
+                onclick="openGift()"
+            >
+                🎁 Open Your Surprise
+            </button>
+
+        </div>
+
+        <!-- LETTER -->
+        <div id="letter">
+
+            <div class="letter-card">
+
+                <h3>
+                    Dear Riya, 🌸
+                </h3>
+
+                <p>
+                    Pata nahi kab, but aap mere liye kaafi special ban gayi. ✨
+                </p>
+
+                <p>
+                    Aapki smile 😊, aapki baatein 💬…
+                    pata nahi kyun, but mere ordinary days ko bhi
+                    thoda better bana deti hain. 🌷
+                </p>
+
+                <p>
+                    Main koi perfect promise nahi karna chahta,
+                    bas ek genuine feeling share karna chahta hoon… 💭❤️
+                </p>
+
+                <p>
+                    I really like you, Riya. 🫶🏻❤️
+                </p>
+
+                <p>
+                    Agar aap comfortable ho, toh kya hum saath mein
+                    kuch beautiful memories bana sakte hain? 🌙✨💗
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HEART -->
+<section>
+
+    <div class="content">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Some Feelings Are Better Said Honestly
+        </h2>
+
+        <p>
+            No pressure. No expectations.
+            Just one genuine feeling from my side.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PROPOSAL -->
+<section class="proposal">
+
+    <div class="content glass">
+
+        <div class="small">
+            One final question
+        </div>
+
+        <div class="question">
+            Riya, would you like to<br>
+            make some beautiful memories together? 💗
+        </div>
+
+        <div>
+
+            <button
+                class="btn"
+                onclick="yesAnswer()"
+            >
+                I’d Like That ❤️
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="timeAnswer()"
+            >
+                I Need Time 🌸
+            </button>
+
+        </div>
+
+        <div
+            class="response"
+            id="response"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SPACE / GALAXY
+========================= */
+
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+let shootingStars = [];
+
+function resizeCanvas(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+
+function createStars(){
+
+    stars = [];
+
+    const amount =
+        Math.min(500, Math.floor(
+            window.innerWidth * window.innerHeight / 5000
+        ));
+
+    for(let i = 0; i < amount; i++){
+
+        stars.push({
+
+            x:Math.random() * canvas.width,
+
+            y:Math.random() * canvas.height,
+
+            z:Math.random() * 2 + .2,
+
+            size:Math.random() * 1.7 + .2,
+
+            twinkle:Math.random() * Math.PI * 2
+
+        });
+
+    }
+
+}
+
+createStars();
+
+
+function drawSpace(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    const gradient =
+        ctx.createRadialGradient(
+            canvas.width/2,
+            canvas.height/2,
+            0,
+            canvas.width/2,
+            canvas.height/2,
+            Math.max(
+                canvas.width,
+                canvas.height
+            )
+        );
+
+    gradient.addColorStop(0,"#17102c");
+    gradient.addColorStop(.45,"#080719");
+    gradient.addColorStop(1,"#010106");
+
+    ctx.fillStyle = gradient;
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    stars.forEach(star => {
+
+        star.twinkle += .02;
+
+        const alpha =
+            .35 +
+            Math.sin(star.twinkle) * .3;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            star.x,
+            star.y,
+            star.size * star.z,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            `rgba(255,255,255,${alpha})`;
+
+        ctx.fill();
+
+    });
+
+
+    requestAnimationFrame(drawSpace);
+
+}
+
+drawSpace();
+
+
+/* =========================
+   INTRO
+========================= */
+
+function enterUniverse(){
+
+    const intro =
+        document.getElementById("intro");
+
+    intro.classList.add("hide");
+
+    const music =
+        document.getElementById("music");
+
+    music.play().catch(()=>{});
+
+    setTimeout(() => {
+
+        window.scrollTo({
+            top:window.innerHeight,
+            behavior:"smooth"
+        });
+
+    },500);
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let playing = false;
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    const button =
+        document.getElementById("musicBtn");
+
+    if(!playing){
+
+        music.play();
+
+        playing = true;
+
+        button.innerHTML = "🔊";
+
+    }else{
+
+        music.pause();
+
+        playing = false;
+
+        button.innerHTML = "🎵";
+
+    }
+
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    const symbols = [
+        "❤️",
+        "💗",
+        "💖",
+        "💕",
+        "✨",
+        "🌸"
+    ];
+
+    heart.innerHTML =
+        symbols[
+            Math.floor(
+                Math.random() * symbols.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (12 + Math.random()*22) + "px";
+
+    heart.style.animationDuration =
+        (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },10000);
+
+}
+
+setInterval(createHeart,900);
+
+
+/* =========================
+   SURPRISE BOX
+========================= */
+
+let opened = false;
+
+function openGift(){
+
+    if(opened) return;
+
+    opened = true;
+
+    const gift =
+        document.getElementById("gift");
+
+    const letter =
+        document.getElementById("letter");
+
+    const text =
+        document.getElementById("surpriseText");
+
+    gift.classList.add("open");
+
+    text.innerHTML =
+        "Your little surprise is opening... ✨";
+
+    setTimeout(() => {
+
+        letter.classList.add("show");
+
+        text.innerHTML =
+            "A little message, just for you. 💌";
+
+        setTimeout(() => {
+
+            letter.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+        },300);
+
+    },800);
+
+}
+
+
+/* =========================
+   YES RESPONSE
+========================= */
+function yesAnswer(){
+
+    const response = document.getElementById("response");
+
+    response.innerHTML = `
+        <div style="
+            font-size:clamp(35px,8vw,70px);
+            font-weight:bold;
+            margin-top:25px;
+            animation:heartBeat 1.5s infinite;
+        ">
+            I Love You, Riya ❤️
+        </div>
+
+        <p style="margin-top:20px;">
+            You make my ordinary days feel a little more special. ✨
+        </p>
+
+        <p style="margin-top:10px;">
+            I'm really happy ki aap meri life mein aayi. 🌸
+
+        </p>
+
+        <p style="margin-top:10px;">
+            Ab bas dil chahta hai ki hum saath mein bahut saari beautiful memories banayein. 💗
+        </p>
+    `;
+
+    createConfetti();
+}
+
+
+
+
+
+/* =========================
+   TIME RESPONSE
+========================= */
+
+function timeAnswer(){
+
+    const response =
+        document.getElementById("response");
+
+    response.innerHTML =
+        "Of course. Take all the time you need. 🌸";
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(){
+
+    const symbols = [
+        "❤️",
+        "💗",
+        "✨",
+        "🌸",
+        "💖"
+    ];
+
+    for(let i=0;i<70;i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+        piece.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        piece.style.left =
+            Math.random()*100 + "vw";
+
+        piece.style.fontSize =
+            (12 + Math.random()*15) + "px";
+
+        piece.style.animationDelay =
+            Math.random()*1.5 + "s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        },5000);
+
+    }
+
+}
+
+
+/* =========================
+   PARALLAX EFFECT
+========================= */
+
+window.addEventListener("mousemove", e => {
+
+    const x =
+        (e.clientX / window.innerWidth - .5);
+
+    const y =
+        (e.clientY / window.innerHeight - .5);
+
+    document.querySelectorAll(".glass")
+        .forEach(card => {
+
+            card.style.transform =
+                `perspective(1000px)
+                 rotateY(${x * 2}deg)
+                 rotateX(${y * -2}deg)`;
+
+        });
+
+});
+
+</script>
+
+</body>
+</html>
